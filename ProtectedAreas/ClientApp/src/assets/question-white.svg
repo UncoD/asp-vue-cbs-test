@@ -1,0 +1,6 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17" width="17" height="17">
+	<defs>
+		<image width="18" height="18" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAAXNSR0IArs4c6QAAAXZJREFUOE+tlD1Ow0AQhWfcRFYikdwAbsABIkHpMkjpcaSUKeAEUKajcR/TpYgEdCk5Qm4AN0iQYo9cJIPe4rXkn5UJYqUtrJ399s3bt2b6p8FNnO122/d9/1ZVR8x8qap9Zt4R0TumiDwPBgN8F6MGEpGQmZ+w2SUW0MPhMOl2u6+2pgQSkUciejih24nv+zHqCxCUENHiBIgpPR6PN1BmQLknH9V2VqsVxbE5kHq9Hs1mMxoOh6Wz0KaIXBhQmqZ38KWqBiBsBGQ6nZrl5XJZE62q9wYkIriNK1db+/2+DfRmFe2Y+awJBMh8PqfNZkNhGNJ4PK6VoT2rSF1qrE8AAOSMRO6RU1EURbRer4038KppqOrXrzxqi4SqFh413hoAVhGuPggCl6KfW0OOOp3OZ5PhyBF8coHQVpZl50WykyQZeZ730tZGdb2UbLv4h2dSf2sWBmXMHLtyhTq0o6qh8/VbWO4ZQnONCSg22/9RlmVx9X/0DYL5yCLxTLAHAAAAAElFTkSuQmCC"/>
+	</defs>
+	<use id="иконка 6" href="#img1" transform="matrix(1,0,0,1,-1,-1)"/>
+</svg>

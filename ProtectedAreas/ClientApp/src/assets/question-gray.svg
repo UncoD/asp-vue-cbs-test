@@ -1,0 +1,6 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 17" width="17" height="17">
+	<defs>
+		<image width="18" height="18" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABIAAAASCAYAAABWzo5XAAAAAXNSR0IArs4c6QAAAWtJREFUOE+tlDFuwkAQRf8Upg0FNUpEQUMRThBqaOITxNwgOUFygxwhcAInEktDwyFoKFAiN27tdl1s9DdeSwYvMVFG2sLa2ee/f2ZW8E8hTZw4jrudTudBRO6NMbcAugAyAFsurfUyDEN+V3ECUkpFAF7Lwz69mYjMp9Ppu0uogZRSLwCeL7jtfDabLZhfgUolbxdAbKqIhFRmQaUnn8fXGQwGGA6H9kBRFNjtdkjT9Phfmdb6xoJWq9WjiNCXWhDEg4RMJhO7t9lsTkQbY54sSCnFatz5rhUEwVkQgA8HYimvmkCEjMdj9Ho97Pd7HA6HprTMgYxPjfOJAIJ88aui0WiEfr9vvaFXnshbedSiJX488lWNe04RS58kSSOzqlrZR19NhrOP6NMZUK61vq46e71ec0DjFteopdQ62+38YUxOZ83BSmUcxMa+KvNyEYm80+9g9CwIgkhEOBdchOZ8i4wx26IoFsfv0TdJpaM+RJF/JQAAAABJRU5ErkJggg=="/>
+	</defs>
+	<use id="quest_gray" href="#img1" transform="matrix(1,0,0,1,-1,-1)"/>
+</svg>

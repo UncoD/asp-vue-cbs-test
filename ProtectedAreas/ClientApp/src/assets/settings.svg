@@ -1,0 +1,6 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="20" height="20">
+	<defs>
+		<image width="20" height="20" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAAAXNSR0IArs4c6QAAAaJJREFUOE+11Uurj1EUx/HPz8AASVJSZMCAvACUjOQykJmU60DkepTXoVwOcjJwrZOZDFwyQuEFiAEDUVKS3AYGtvZpn39PJ38lj2f27LXWd+/1W2vtHX/4SilzcAtrmtsjbE7yaVhYphpKKTOSfK/rpZQRHMO25jeOk0lONfvAd5IzAJZSpuMiduJFDcRRvEuyrgHuYwFOt42W4Sr2JvlRfbrAK9iEHTiMCrmE0STPGnBFs+1BhY/iGm4n2TUA1jTxDRuT3C2lTMOsJJ9/p1UpZTa+JvlZStmAO5hZpeqe8DleYkt1nASVUhZhdft/nORNx1Y3vomlSZZPTXl/021+PVnT9AQO4WODzMVZHK+atZO+r3omuTABbK2xG/vwIMmBpteZVt3tSe61tfW4jvEkR9raeazFGC5X4EMsxCuM1AK0NF83TSdgnTQrtGq2uKZfSqmFqm20BG8rsGBVkqedoK04l2TekKJ8wMEkNzoxK/HkvwB7T7nOa39F6WjQT9t0gP019pDRq6P05V9Gr7/LoXV8v9dXR8t+LtghWv31E/ALXMo7thKBddEAAAAASUVORK5CYII="/>
+	</defs>
+	<use id="settings-svg" href="#img1" transform="matrix(1,0,0,1,0,0)"/>
+</svg>

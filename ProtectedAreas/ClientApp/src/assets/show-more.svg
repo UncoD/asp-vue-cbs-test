@@ -1,0 +1,6 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 6" width="27" height="6">
+	<defs>
+		<image width="27" height="6" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABsAAAAGCAYAAAAynOUQAAAAAXNSR0IArs4c6QAAAPBJREFUKFN9kr8rxlEUh59nwmAQWWSzUCZMrCZ2izJZlMlg9S+Y1bv78f4BeleFsnmjbN6IMshfcHTrqtO3mzvdznnu53PuOceIGAc2gSVgAngDBuor6USElVsGJoFP4EYdZq7cI2IDWAGmgC/gQb03InaAxe4D4FT9/otHRClovcH11FHi1oCtBtcvZieNRAndqtdJ5Kj+qIs/q+eJ2wfmGpof/5kN1askclzb3NUZqb3EHQCzDbOfYnYITDeSZ+p7EtkFFhrchfqUuG1gtcENilkZ9h4wU4EA7nIL69DHgGI4n4Qe1X5jQbp78AJc/gKpB1s906vkGQAAAABJRU5ErkJggg=="/>
+	</defs>
+	<use id="show-more-icon" href="#img1" transform="matrix(1,0,0,1,0,0)"/>
+</svg>

@@ -1,0 +1,6 @@
+<svg version="1.2" baseProfile="tiny-ps" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 13 9" width="13" height="9">
+	<defs>
+		<image width="13" height="9" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA0AAAAJCAYAAADpeqZqAAAAAXNSR0IArs4c6QAAANNJREFUKFON0b8qwFEUB/DPNywmj+ABDDZJeQDiAYwGE6sN8QKKyGI2ipJSsnoAMWCwKU8g5einm37+DO50z733c+855waqagfHSa66+K9RVSM4wFaq6hRzeMdUkuufqKqGcY5p3HVoE+vt4Asmkzz2YVWdYaatXaSlt4JtDOAW40neqqrb7y5da+AS85+owXmctPAGE9jAals7SrLQzb9Qg0vYwyA6ONZ7YTbJ6y/U4C6WezU9JRnt1/jtpV6qh1jEQ9eAJPf/QUPY7xqQ5PnnF3wARGhHwX+VLikAAAAASUVORK5CYII="/>
+	</defs>
+	<use id="arrow icon" href="#img1" transform="matrix(1,0,0,1,0,0)"/>
+</svg>
