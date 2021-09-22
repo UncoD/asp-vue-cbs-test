@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Test\\ProtectedAreas\\ProtectedAreas\\ProtectedAreas.csproj": {}
+    "D:\\Test\\asp-vue-cbs-test\\ProtectedAreas\\ProtectedAreas.csproj": {}
   },
   "projects": {
-    "D:\\Test\\ProtectedAreas\\ProtectedAreas\\ProtectedAreas.csproj": {
+    "D:\\Test\\asp-vue-cbs-test\\ProtectedAreas\\ProtectedAreas.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Test\\ProtectedAreas\\ProtectedAreas\\ProtectedAreas.csproj",
+        "projectUniqueName": "D:\\Test\\asp-vue-cbs-test\\ProtectedAreas\\ProtectedAreas.csproj",
         "projectName": "ProtectedAreas",
-        "projectPath": "D:\\Test\\ProtectedAreas\\ProtectedAreas\\ProtectedAreas.csproj",
+        "projectPath": "D:\\Test\\asp-vue-cbs-test\\ProtectedAreas\\ProtectedAreas.csproj",
         "packagesPath": "C:\\Users\\y28yu\\.nuget\\packages\\",
-        "outputPath": "D:\\Test\\ProtectedAreas\\ProtectedAreas\\obj\\",
+        "outputPath": "D:\\Test\\asp-vue-cbs-test\\ProtectedAreas\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\y28yu\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +39,12 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "VueCliMiddleware": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

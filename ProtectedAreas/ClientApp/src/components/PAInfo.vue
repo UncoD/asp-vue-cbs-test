@@ -5,19 +5,19 @@
         <table class="table-without-header">
           <tr>
             <td>Порядковый номер кадастрового дела</td>
-            <td>5646</td>
+            <td>{{ protectedArea.cadastralFileNumber }}</td>
           </tr>
           <tr>
             <td>Статус</td>
-            <td>Действующая</td>
+            <td>{{ protectedArea.status }}</td>
           </tr>
           <tr>
             <td>Полное наименование <div class="question question__gray" /></td>
-            <td></td>
+            <td>{{ protectedArea.fullName }}</td>
           </tr>
           <tr>
             <td>Краткое наименование <div class="question question__gray" /></td>
-            <td>Сочинский</td>
+            <td>{{ protectedArea.shortName }}</td>
           </tr>
         </table>
       </div>
@@ -31,13 +31,12 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td>
-              <td>Старый Сочинский</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Новый Сочинский</td>
+            <tr
+              v-for="name in protectedArea.obsoleteNames"
+              :key="name.number"
+            >
+              <td>{{ name.number }}</td>
+              <td>{{ name.name }}</td>
             </tr>
           </tbody>
         </table>
@@ -46,23 +45,23 @@
         <table class="table-without-header">
           <tr>
             <td>Категория ООПТ</td>
-            <td>Государственные природные заказники</td>
+            <td>{{ protectedArea.category }}</td>
           </tr>
           <tr>
             <td>Значение ООПТ</td>
-            <td>федеральное</td>
+            <td>{{ protectedArea.significance }}</td>
           </tr>
           <tr>
             <td>Профиль</td>
-            <td>комплексный</td>
+            <td>{{ protectedArea.profile }}</td>
           </tr>
           <tr>
             <td>Дата создания <div class="question question__gray" /></td>
-            <td>03.12.1993</td>
+            <td>{{ formateDate(protectedArea.creationDate) }}</td>
           </tr>
           <tr>
             <td>Дата восстановления <div class="question question__gray" /></td>
-            <td></td>
+            <td>{{ formateDate(protectedArea.restorationDate) }}</td>
           </tr>
         </table>
       </div>
@@ -77,45 +76,47 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td
-                class="dropdown-table__arrow-btn"
-                @click="toggleTableDropdown(0, internationalStatusOpened)"
+            <template v-for="status in protectedArea.internationalStatuses">
+              <tr :key="status.number">
+                <td
+                  class="dropdown-table__arrow-btn"
+                  @click="toggleTableDropdown(status.number, internationalStatusOpened)"
+                >
+                  <div
+                    class="dropdown-table__row-arrow"
+                    :class="{
+                      'dropdown-table__row-arrow__inverted': internationalStatusOpened.includes(status.number)
+                    }"
+                  />
+                </td>
+                <td>{{ status.number }}</td>
+                <td>{{ status.status }}</td>
+              </tr>
+              <tr
+                v-if="internationalStatusOpened.includes(status.number)"
+                :key="status.number + '_dropdown-table__row__expanded'"
+                class="dropdown-table__row__expanded"
               >
-                <div
-                  class="dropdown-table__row-arrow"
-                  :class="{
-                    'dropdown-table__row-arrow__inverted': internationalStatusOpened.includes(0)
-                  }"
-                />
-              </td>
-              <td>1</td>
-              <td>Водно-болотное угодье международного значения</td>
-            </tr>
-            <tr
-              v-if="internationalStatusOpened.includes(0)"
-              :key="0 + '_dropdown-table__row__expanded'"
-              class="dropdown-table__row__expanded"
-            >
-              <td :colspan="internationalStatusColumnCount">
-                <div class="dropdown-table__info-block">
-                  <div class="dropdown-table__info-title">
-                    Наименование объекта международного значения
+                <td :colspan="internationalStatusColumnCount">
+                  <div class="dropdown-table__info-block">
+                    <div class="dropdown-table__info-title">
+                      Наименование объекта международного значения
+                    </div>
+                    <div class="dropdown-table__info-value">
+                      {{ status.name }}
+                    </div>
                   </div>
-                  <div class="dropdown-table__info-value">
-                    Водно-болотное угодье
+                  <div class="dropdown-table__info-block">
+                    <div class="dropdown-table__info-title">
+                      Документ <div class="question question__gray" />
+                    </div>
+                    <div class="dropdown-table__info-value">
+                      {{ status.document }}
+                    </div>
                   </div>
-                </div>
-                <div class="dropdown-table__info-block">
-                  <div class="dropdown-table__info-title">
-                    Документ <div class="question question__gray" />
-                  </div>
-                  <div class="dropdown-table__info-value">
-                    Пример документа
-                  </div>
-                </div>
-              </td>
-            </tr>
+                </td>
+              </tr>
+            </template>
           </tbody>
         </table>
       </div>
@@ -131,54 +132,31 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td
-                class="dropdown-table__arrow-btn"
-                @click="toggleTableDropdown(0, liquidationOpened)"
+            <template v-for="liquidation in protectedArea.liquidations">
+              <tr :key="liquidation.number">
+                <td
+                  class="dropdown-table__arrow-btn"
+                  @click="toggleTableDropdown(liquidation.number, liquidationOpened)"
+                >
+                  <div
+                    class="dropdown-table__row-arrow"
+                    :class="{
+                      'dropdown-table__row-arrow__inverted': liquidationOpened.includes(liquidation.number)
+                    }"
+                  />
+                </td>
+                <td>{{ liquidation.number }}</td>
+                <td>{{ formateDate(liquidation.date, false) }}</td>
+                <td>{{ liquidation.type }}</td>
+              </tr>
+              <tr
+                v-if="liquidationOpened.includes(liquidation.number)"
+                :key="liquidation.number + '_dropdown-table__row__expanded'"
+                class="dropdown-table__row__expanded"
               >
-                <div
-                  class="dropdown-table__row-arrow"
-                  :class="{
-                    'dropdown-table__row-arrow__inverted': liquidationOpened.includes(0)
-                  }"
-                />
-              </td>
-              <td>1</td>
-              <td>15.01.82</td>
-              <td>реорганизация</td>
-            </tr>
-            <tr
-              v-if="liquidationOpened.includes(0)"
-              :key="0 + '_dropdown-table__row__expanded'"
-              class="dropdown-table__row__expanded"
-            >
-              <td :colspan="liquidationColumnCount">
-              </td>
-            </tr>
-            <tr>
-              <td
-                class="dropdown-table__arrow-btn"
-                @click="toggleTableDropdown(1, liquidationOpened)"
-              >
-                <div
-                  class="dropdown-table__row-arrow"
-                  :class="{
-                    'dropdown-table__row-arrow__inverted': liquidationOpened.includes(1)
-                  }"
-                />
-              </td>
-              <td>2</td>
-              <td>15.01.20</td>
-              <td>реорганизация</td>
-            </tr>
-            <tr
-              v-if="liquidationOpened.includes(1)"
-              :key="0 + '_dropdown-table__row__expanded'"
-              class="dropdown-table__row__expanded"
-            >
-              <td :colspan="liquidationColumnCount">
-              </td>
-            </tr>
+                <td :colspan="liquidationColumnCount" />
+              </tr>
+            </template>
           </tbody>
         </table>
       </div>
@@ -189,6 +167,9 @@
 <script>
 export default {
   name: "PAInfo",
+  props: {
+    protectedArea: { type: Object, required: true }
+  },
   data() {
     return {
       internationalStatusOpened: [],
@@ -205,6 +186,21 @@ export default {
       } else {
         array.push(id)
       }
+    },
+    formateDate(value, fullYear = true) {
+      const date = new Date(value)
+      if (date.getFullYear() === 1) return ''
+
+      let dd = date.getDate()
+      let mm = date.getMonth() + 1
+      let yy = date.getFullYear() % (fullYear ? 10000 : 100)
+      if (dd < 10) dd = '0' + dd
+      if (mm < 10) mm = '0' + mm
+      if (yy < 10) yy = (fullYear ? '000' : '0') + yy
+      else if (yy < 100) yy = (fullYear ? '00' : '') + yy
+      else if (yy < 1000) yy = '0' + yy
+
+      return dd + '.' + mm + '.' + yy
     }
   },
 }
@@ -345,8 +341,9 @@ export default {
   &__row-arrow {
     background: url("../assets/angle-arrow-dark.svg") no-repeat center;
     height: 20px;
-    &__inverted {
       transform: scale(1, -1);
+    &__inverted {
+      transform: scale(1, 1);
     }
   }
 }

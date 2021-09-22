@@ -3,11 +3,7 @@
     <LeftSidebar />
     <div class="main">
       <PAHeader />
-      <h2>ООПТ Сочинский</h2>
-      <div class="info-container">
-        <PAInfo />
-        <RightSidebar />
-      </div>
+      <PAContainer />
       <PAFooter />
     </div>
   </div>
@@ -16,17 +12,15 @@
 <script>
 import PAHeader from "./components/PAHeader.vue"
 import PAFooter from "./components/PAFooter.vue"
-import PAInfo from "./components/PAInfo.vue"
+import PAContainer from "./components/PAContainer.vue"
 import LeftSidebar from "./components/LeftSidebar.vue"
-import RightSidebar from "./components/RightSidebar.vue"
 export default {
   name: 'App',
   components: {
     PAHeader,
     PAFooter,
-    PAInfo,
-    LeftSidebar,
-    RightSidebar
+    PAContainer,
+    LeftSidebar
   }
 }
 </script>
@@ -52,17 +46,5 @@ body {
   display: flex;
   flex-direction: column;
   flex: 1;
-
-  & > h2 {
-    padding: 0 10px;
-    font-weight: 400;
-    margin: 5px 0 15px;
-  }
-}
-.info-container {
-  flex: 1;
-  display: flex;
-  padding: 0 10px;
-  overflow-y: hidden;
 }
 </style>

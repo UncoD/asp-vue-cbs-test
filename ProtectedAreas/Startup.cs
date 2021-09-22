@@ -1,34 +1,32 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.SpaServices;
+using VueCliMiddleware;
 
 namespace ProtectedAreas
 {
     public class Startup
     {
+        private readonly string _spaSourcePath;
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
+            _spaSourcePath = Configuration.GetValue<string>("SPA:SourcePath");
         }
 
         public IConfiguration Configuration { get; }
-
-        // This method gets called by the runtime. Use this method to add services to the container.
+        
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
+            services.AddMvc(options => options.SuppressAsyncSuffixInActionNames = false);
+            services.AddSpaStaticFiles(opt => opt.RootPath = $"{_spaSourcePath}/dist");
         }
-
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+        
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -37,12 +35,19 @@ namespace ProtectedAreas
             }
 
             app.UseRouting();
-
-            app.UseAuthorization();
+            app.UseSpaStaticFiles();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+
+                endpoints.MapToVueCliProxy(
+                    "{*path}",
+                    new SpaOptions { SourcePath = _spaSourcePath },
+                    npmScript: System.Diagnostics.Debugger.IsAttached ? "serve" : null,
+                    regex: "Compiled successfully",
+                    forceKill: true
+                );
             });
         }
     }

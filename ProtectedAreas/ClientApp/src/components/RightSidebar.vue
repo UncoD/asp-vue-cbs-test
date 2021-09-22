@@ -31,6 +31,7 @@ export default {
   padding: 20px;
   box-sizing: border-box;
   margin-left: 10px;
+  overflow-y: auto;
 
   .menu {
     list-style: none;

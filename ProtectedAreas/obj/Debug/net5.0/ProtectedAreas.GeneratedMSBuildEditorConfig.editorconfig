@@ -7,4 +7,4 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = ProtectedAreas
-build_property.ProjectDir = d:\Test\asp-vue-cbs-test\ProtectedAreas\
+build_property.ProjectDir = D:\Test\asp-vue-cbs-test\ProtectedAreas\
