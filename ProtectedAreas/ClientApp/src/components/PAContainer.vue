@@ -24,7 +24,7 @@ export default {
     }
   },
   created() {
-    axios.get('/api/ProtectedArea')
+    axios.get('/api/ProtectedArea', { params: { id: 1 } })
     .then(res => {this.protectedArea = res.data; console.log(res.data)})
   },
 }

@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using ProtectedAreas.Data;
-using ProtectedAreas.Models;
+﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using ProtectedAreas.Data.Repositories.Interfaces;
 
 namespace ProtectedAreas.Controllers
 {
@@ -8,10 +8,18 @@ namespace ProtectedAreas.Controllers
     [Route("api/[controller]")]
     public class ProtectedAreaController : ControllerBase
     {
-        [HttpGet]
-        public ProtectedArea Get()
+        private readonly IProtectedAreaRepository _protectedAreaRepository;
+
+        public ProtectedAreaController(IProtectedAreaRepository protectedAreaRepository)
         {
-            return new AppDbSeedData().LoadProtectedArea();
+            _protectedAreaRepository = protectedAreaRepository;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> Get([FromQuery] int id)
+        {
+            var protectedArea = await _protectedAreaRepository.GetAsync(id);
+            return protectedArea != null ? Ok(protectedArea) : NotFound();
         }
     }
 }

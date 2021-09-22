@@ -1,55 +1,64 @@
 ﻿using System;
-using System.Collections.Generic;
 using ProtectedAreas.Models;
 
 namespace ProtectedAreas.Data
 {
-    public class AppDbSeedData
+    public static class AppDbSeedData
     {
-        public ProtectedArea LoadProtectedArea()
+        public static void LoadSeedData(AppDbContext dbContext)
         {
-            return new ProtectedArea
+            LoadProtectedArea(dbContext);
+            LoadObsoleteNames(dbContext);
+            LoadInternationalStatuses(dbContext);
+            LoadLiquidations(dbContext);
+
+            dbContext.SaveChanges();
+        }
+
+        private static void LoadProtectedArea(AppDbContext dbContext)
+        {
+            dbContext.ProtectedAreas.Add(new ProtectedArea
             {
-                Id = 1,
                 CadastralFileNumber = "5646",
                 Status = "Действующая",
                 FullName = "Сочинский национальный парк",
                 ShortName = "ООПТ Сочинский",
-                ObsoleteNames = LoadAObsoleteNames(),
                 Category = "Государственные природные заказники",
                 Significance = "федеральное",
                 Profile = "комплексный",
                 CreationDate = new DateTime(1993, 12, 3),
-                RestorationDate = new DateTime(),
-                InternationalStatuses = LoadInternationalStatuses(),
-                Liquidations = LoadLiquidations()
-            };
+                RestorationDate = new DateTime()
+            });
         }
 
-        public List<ObsoleteName> LoadAObsoleteNames()
+        private static void LoadObsoleteNames(AppDbContext dbContext)
         {
-            return new List<ObsoleteName>()
-            {
-                new() { Id = 1, Number = 1, Name = "Старое название" },
-                new() { Id = 1, Number = 2, Name = "Другое старое название" }
-            };
+            dbContext.ObsoleteNames.Add(new ObsoleteName { Number = 1, Name = "Старое название", ProtectedAreaId = 1 });
+            dbContext.ObsoleteNames.Add(new ObsoleteName { Number = 2, Name = "Другое старое название", ProtectedAreaId = 1 });
         }
 
-        public List<InternationalStatus> LoadInternationalStatuses()
+        private static void LoadInternationalStatuses(AppDbContext dbContext)
         {
-            return new List<InternationalStatus>()
+            dbContext.InternationalStatuses.Add(new InternationalStatus
             {
-                new() { Id = 1, Number = 1, Status = "Водно-болотное угодье международного значения", Name = "Водно-болотное угодье", Document = "Пример документа"}
-            };
+                Number = 1,
+                Status = "Водно-болотное угодье международного значения",
+                Name = "Водно-болотное угодье",
+                Document = "Пример документа",
+                ProtectedAreaId = 1
+            });
         }
 
-        public List<Liquidation> LoadLiquidations()
+        private static void LoadLiquidations(AppDbContext dbContext)
         {
-            return new List<Liquidation>()
+            dbContext.Liquidations.Add(new Liquidation
             {
-                new() { Id = 1, Number = 1, Date = new DateTime(1982, 1, 15), Type = "реорганизация"},
-                new() { Id = 1, Number = 2, Date = new DateTime(2020, 1, 15), Type = "реорганизация"}
-            };
+                Number = 1, Date = new DateTime(1982, 1, 15), Type = "реорганизация", ProtectedAreaId = 1
+            });
+            dbContext.Liquidations.Add(new Liquidation
+            {
+                Number = 2, Date = new DateTime(2020, 1, 15), Type = "реорганизация", ProtectedAreaId = 1
+            });
         }
     }
 }

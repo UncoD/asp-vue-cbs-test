@@ -4,6 +4,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.SpaServices;
+using Microsoft.EntityFrameworkCore;
+using ProtectedAreas.Data;
+using ProtectedAreas.Data.Repositories;
+using ProtectedAreas.Data.Repositories.Interfaces;
 using VueCliMiddleware;
 
 namespace ProtectedAreas
@@ -22,6 +26,9 @@ namespace ProtectedAreas
         
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<AppDbContext>(context => context.UseInMemoryDatabase("ProtectedAreaDB"));
+            services.AddTransient<IProtectedAreaRepository, ProtectedAreaRepository>();
+
             services.AddControllers();
             services.AddMvc(options => options.SuppressAsyncSuffixInActionNames = false);
             services.AddSpaStaticFiles(opt => opt.RootPath = $"{_spaSourcePath}/dist");
